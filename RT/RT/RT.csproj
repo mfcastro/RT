@@ -200,14 +200,31 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605312000512_InitialCreate.cs" />
+    <Compile Include="Migrations\201605312000512_InitialCreate.Designer.cs">
+      <DependentUpon>201605312000512_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Direction.cs" />
+    <Compile Include="Models\Followed.cs" />
+    <Compile Include="Models\Followers.cs" />
+    <Compile Include="Models\Follower_Followed_Join.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\RecipeCollection.cs" />
+    <Compile Include="Models\Recipe_Collection_Join.cs" />
+    <Compile Include="Models\Recipe_Direction_Join.cs" />
+    <Compile Include="Models\Recipe_Ingredient_Join.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -251,6 +268,7 @@
     <Content Include="edge\x64\edge_nativeclr.node">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include=".bin\node.cmd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -262,6 +280,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\myfunc.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -302,11 +321,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApplicationBase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605312000512_InitialCreate.resx">
+      <DependentUpon>201605312000512_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
