@@ -12,10 +12,10 @@ namespace RT.Models
 		[Key]
 		public int ID { get; set; }
 
-		//[ForeignKey("Ingredient")]
-		//public int IngredientID { get; set; }
+		[ForeignKey("Ingredient")]
+		public int IngredientID { get; set; }
 
-		//public virtual RecipeCollection RecipeCollection { get; set; }
+		public virtual Ingredient Ingredient { get; set; }
 
 
 		[ForeignKey("Recipe")]

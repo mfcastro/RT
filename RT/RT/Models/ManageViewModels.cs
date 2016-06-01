@@ -83,4 +83,36 @@ namespace RT.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+
+	public class RecipeViewModel
+	{
+	
+		public Recipe Recipe { get; set; }
+
+		public Author Author { get; set; }
+
+		public Ingredient Ingredients{ get; set; }
+
+		public Direction Directions { get; set; }
+
+
+		public Recipe_Ingredient_Join Recipe_Ingredient_Join { get; set; }
+
+		public Recipe_Direction_Join Recipe_Direction_Join { get; set; }
+
+	}
+
+
+
+
+	public class ViewModel
+	{
+		public List<User> Users { get; set; }
+	}
+
+	public class User
+	{
+		public string Name { get; set; }
+	}
 }

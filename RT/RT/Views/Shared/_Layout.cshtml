@@ -27,8 +27,8 @@
 					@{ 
 						if (Context.User.Identity.IsAuthenticated)
 						{
-							<li>@Html.ActionLink("RECIPES", "Index", "Home")</li>
-							<li>@Html.ActionLink("ADD RECIPE", "Index", "Home")</li>
+							<li>@Html.ActionLink("RECIPES", "Index", "Recipes")</li>
+							<li>@Html.ActionLink("ADD RECIPE", "Create", "Recipes")</li>
 							<li>@Html.ActionLink("MY RECIPE BOX", "Index", "Home")</li>
 							<li>@Html.ActionLink("MY ACCOUNT", "Index", "Home")</li>
 						}
@@ -49,6 +49,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+	<script src="~/Scripts/knockout-3.4.0.js"></script>
+	<script src="~/Scripts/AddAdditionalFormRows.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

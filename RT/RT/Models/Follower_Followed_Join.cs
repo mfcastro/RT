@@ -13,14 +13,14 @@ namespace RT.Models
 		public int ID { get; set; }
 
 
-		//[ForeignKey("Followers")]
-		//public int FollowerUserID { get; set; }
+		[ForeignKey("Followers")]
+		public int ? FollowerUserID { get; set; }
 
-		//public virtual Followers Followers { get; set; }
+		public virtual Followers Followers { get; set; }
 
 		[ForeignKey("Followed")]
-		public int FollowedUserID { get; set; }
+		public int ? FollowedUserID { get; set; }
 
-		public virtual Followers Followed { get; set; }
+		public virtual Followed Followed { get; set; }
 	}
 }

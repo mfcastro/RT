@@ -23,21 +23,25 @@ namespace RT.Controllers
 
 
 		//Linked up. Need to change it to a relative path.
-		static Func<object, Task<object>> outsideFunc = Edge.Func(@"return require('C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\myfunc.js')");
+		//static Func<object, Task<object>> outsideFunc = Edge.Func(@"return require('C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\myfunc.js')");
 
 
 		public async Task<ActionResult> Index()
 		{
-			try
-			{
-				ViewBag.Message = await outsideFunc("Hello");
+
+
+			//THIS IS THE CODE THAT WILL ACTIVATE THE WEB SCRAPPER 
+			
+			//try
+			//{
+			//	ViewBag.Message = await outsideFunc("Hello");
 				
-			}
-			catch (AccessViolationException e )
-			{
-				Console.WriteLine("There was an error!");
-				Console.WriteLine(e);
-			}
+			//}
+			//catch (AccessViolationException e )
+			//{
+			//	Console.WriteLine("There was an error!");
+			//	Console.WriteLine(e);
+			//}
 			
 			return View();
 		}
