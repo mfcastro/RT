@@ -24,6 +24,8 @@ namespace RT.Controllers
 
 
 			var recipe = db.Recipe.Include(r => r.Author).ToList();
+			//var recipe = db.Recipe.ToList();
+
 			return View(recipe);
 
 		}
@@ -104,36 +106,63 @@ namespace RT.Controllers
 
 
         // GET: Recipes/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Recipe recipe)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Recipe recipe = db.Recipe.Find(id);
-            if (recipe == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AuthorID = new SelectList(db.Author, "ID", "AuthorName", recipe.AuthorID);
-            return View(recipe);
-        }
+			//if (id == null)
+			//{
+			//    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			//}
+			//Recipe recipe = db.Recipe.Find(id);
+			//if (recipe == null)
+			//{
+			//    return HttpNotFound();
+			//}
+			//ViewBag.AuthorID = new SelectList(db.Author, "ID", "AuthorName", recipe.AuthorID);
+			//return View(recipeRecipeViewModel recipeViewModel = new RecipeViewModel();
+
+			RecipeViewModel recipeViewModel = new RecipeViewModel();
+
+
+			if (recipe.ID == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			recipeViewModel.Recipe = db.Recipe.Find(recipe.ID);
+
+			var ingredientID = db.Recipe_Ingredient_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().IngredientID;
+			var directionID = db.Recipe_Direction_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().DirectionID;
+
+			recipeViewModel.Ingredients = db.Ingredient.Find(ingredientID);
+			recipeViewModel.Directions = db.Direction.Find(directionID);
+
+			recipeViewModel.Author = db.Author.Find(recipe.AuthorID);
+
+
+			if (recipeViewModel.Recipe == null)
+			{
+				return HttpNotFound();
+			}
+			return View(recipeViewModel);
+
+
+		}
 
         // POST: Recipes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,CookingTime,AuthorID")] Recipe recipe)
+        public ActionResult Edit(/*[Bind(Include = "ID,Title,CookingTime,AuthorID")] Recipe recipe*/ RecipeViewModel recipeViewModel)
         {
-            if (ModelState.IsValid)
+			if (ModelState.IsValid)
             {
-                db.Entry(recipe).State = EntityState.Modified;
+                db.Entry(recipeViewModel.Recipe).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AuthorID = new SelectList(db.Author, "ID", "AuthorName", recipe.AuthorID);
-            return View(recipe);
+            //ViewBag.AuthorID = new SelectList(db.Author, "ID", "AuthorName", recipeViewModel.Author.ID);
+            return View(recipeViewModel);
+
         }
 
         // GET: Recipes/Delete/5

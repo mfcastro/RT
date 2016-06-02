@@ -1,4 +1,4 @@
-﻿@model RT.Models.Recipe
+﻿@model RT.Models.RecipeViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -6,6 +6,9 @@
 
 <h2>Edit</h2>
 
+
+
+@* YOU NEED TO UPDATE THE MODEL TO RECIPEVIEWMODEL *@
 
 @using (Html.BeginForm())
 {
@@ -15,31 +18,55 @@
         <h4>Recipe</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.Author.AuthorName)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Recipe.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Recipe.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Recipe.Title, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CookingTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Recipe.CookingTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CookingTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CookingTime, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Recipe.CookingTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Recipe.CookingTime, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AuthorID, "AuthorID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AuthorID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AuthorID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		@*<div class="form-group">
+			@Html.LabelFor(model => model.Author.AuthorName, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Author.AuthorName, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Author.AuthorName, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
+
+		@*<div class="form-group">
+			@Html.LabelFor(model => model.Author.ID, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Author.ID, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Author.ID, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Ingredients.RecipeIngredient, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Ingredients.RecipeIngredient, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Ingredients.RecipeIngredient, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Directions.RecipeDirection, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Directions.RecipeDirection, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Directions.RecipeDirection, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

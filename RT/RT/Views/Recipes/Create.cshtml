@@ -42,18 +42,32 @@
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.Ingredients.RecipeIngredient, "Ingredients", htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
+			
+			<div class="col-md-9">
 				@Html.EditorFor(model => model.Ingredients.RecipeIngredient, new { htmlAttributes = new { @class = "form-control" } })
 				@Html.ValidationMessageFor(model => model.Ingredients.RecipeIngredient, "", new { @class = "text-danger" })
+				<div class="input_fields_wrap">		
+				</div>
+
 			</div>
+			<div class="col-md-1">
+				<button class="add_field_button"><span class="glyphicon glyphicon-plus"></span></button>
+			</div>
+
 
 		</div>
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.Directions.RecipeDirection, "Directions", htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
+			<div class="col-md-9">
 				@Html.EditorFor(model => model.Directions.RecipeDirection, new { htmlAttributes = new { @class = "form-control" } })
 				@Html.ValidationMessageFor(model => model.Directions.RecipeDirection, "", new { @class = "text-danger" })
+				<div class="direction_input_fields_wrap">
+				</div>
+			</div>
+
+			<div class="col-md-1">
+				<button class="add_direction_field_button"><span class="glyphicon glyphicon-plus"></span></button>
 			</div>
 		</div>
 
@@ -66,7 +80,15 @@
             </div>
         </div>
     </div>
+
+
+	
+
 }
+
+
+
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -74,26 +96,3 @@
 
 
 
-
-<!--------------------------------->
-@*<div class="input_fields_wrap">
-	<button class="add_field_button">Add More Fields</button>
-	<div><input type="text" name="mytext[]"></div>
-</div>*@
-
-
-
-@*<div id="wrapper">
-	<p>Try to type</p>
-	<div data-bind="foreach: users">
-		<input type="text" data-bind="value: name, attr: { name: 'Users[' + $index() + ']' }" />
-		<span data-bind="text: name"></span>
-	</div>
-	<a href="#" data-bind="click: addUser">Add user</a>
-</div>*@
-
-<!------------------------------------->
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -105,14 +105,22 @@ namespace RT.Models
 
 
 
-
-	public class ViewModel
+	public class RecipeViewModelWithListOfIngredients
 	{
-		public List<User> Users { get; set; }
+
+		public Recipe Recipe { get; set; }
+
+		public Author Author { get; set; }
+
+		public List<Ingredient> Ingredients { get; set; }
+
+		public Direction Directions { get; set; }
+
+
+		public Recipe_Ingredient_Join Recipe_Ingredient_Join { get; set; }
+
+		public Recipe_Direction_Join Recipe_Direction_Join { get; set; }
+
 	}
 
-	public class User
-	{
-		public string Name { get; set; }
-	}
 }

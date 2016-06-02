@@ -53,7 +53,7 @@
             @Html.DisplayFor(modelItem => item.CookingTime)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Edit", "Edit", item) |
             @Html.ActionLink("Details", "Details", item) |
             @Html.ActionLink("Delete", "Delete", item)
         </td>
