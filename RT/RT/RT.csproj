@@ -274,6 +274,7 @@
     <Content Include="images\portfolio\8.jpg" />
     <Content Include="images\portfolio\9.jpg" />
     <Content Include="images\RecipeTrainer.jpg" />
+    <Content Include="images\RT_Icon.png" />
     <Content Include="images\slider\slide1.jpg" />
     <Content Include="images\slider\slide2.jpg" />
     <Content Include="images\slider\slide3.jpg" />

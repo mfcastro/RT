@@ -26,7 +26,7 @@ namespace RT.Controllers
 
 
 		//Linked up. Need to change it to a relative path.
-		//static Func<object, Task<object>> outsideFunc = Edge.Func(@"return require('C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\myfunc.js')");
+		static Func<object, Task<object>> outsideFunc = Edge.Func(@"return require('C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\myfunc.js')");
 
 
 		// GET: Recipes
@@ -246,7 +246,7 @@ namespace RT.Controllers
 		public async Task<ActionResult>  GetRecipeFromURL(Recipe recipe)
 		{
 
-			//await outsideFunc(recipe.Author.RecipeURL);
+			await outsideFunc(recipe.Author.RecipeURL);
 
 			RecipeViewModel recipeViewModel = new RecipeViewModel();
 

@@ -1,51 +1,218 @@
 ﻿@model IEnumerable<RT.Models.RecipeCollection>
 
 @{
-    ViewBag.Title = "My Recipe Collections";
+	ViewBag.Title = "My Recipe Collections";
 }
 
 <h2>My Recipe Collections</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class="btn btn-primary"})
 </p>
-<table class="table">
-    <tr>
+
+
+@*<table class="table">
+    <tr>*@
         @*<th>
             @Html.DisplayNameFor(model => model.ApplicationUser.FirstName)
         </th>*@
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CollectionName)
-        </th>
+        </th>*@
         @*<th>
             @Html.DisplayNameFor(model => model.IsList)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsBox)
         </th>*@
-        <th></th>
-    </tr>
+        @*<th></th>
+    </tr>*@
 
-@foreach (var item in Model) {
-    <tr>
+@*@foreach (var item in Model) {
+    <tr>*@
         @*<td>
             @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
         </td>*@
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CollectionName)
-        </td>
+        </td>*@
         @*<td>
             @Html.DisplayFor(modelItem => item.IsList)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsBox)
         </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
         </td>
     </tr>
+
 }
 
-</table>
+</table>*@
+
+
+@{
+
+	var counter = 1;
+	string picture = counter + ".jpg";
+
+	<div id="works" class="clearfix grid">
+
+		@foreach (var item in Model)
+		{
+			picture = counter + ".jpg";
+
+			<figure class="effect-oscar  wowload fadeIn">
+				@*<img src="~/images/portfolio/1.jpg" alt="img01" />*@
+
+				@*<img src=@picture alt="img01" />*@
+				<img src="~/images/portfolio/@picture" alt="img01" />
+
+				<figcaption>
+					<h2>@item.CollectionName</h2>
+					<p>
+						@Html.ActionLink("Details", "Details", new { id = item.ID }) ||
+						@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+					</p>
+				</figcaption>
+			</figure>
+
+			counter++;
+
+		}
+	</div>
+}
+
+
+@*@foreach (var item in Model)
+{
+		 <div id="works" class=" clearfix grid">
+ 		<figure class="effect-oscar  wowload fadeIn">
+		 	<img src="~/images/portfolio/1.jpg" alt="img01" />
+
+ 			<figcaption>
+ 				<h2>@item.CollectionName</h2>
+ 			<p>
+ 				@*Lily likes to play with crayons and pencils<br>*@
+			 	@*"~/images/portfolio/1.jpg"*@
+ 			@*<a href= @picture title="1" data-gallery>View Recipe</a>*@
+
+			 	@*@Html.ActionLink("Details", "Details", new { id = item.ID })
+			 
+ 			</p>
+ 		</figcaption>
+		 </figure>
+ </div>
+	
+}*@
+
+
+
+
+
+
+
+
+
+		@*<div id="works" class="clearfix grid">
+			<figure class="effect-oscar  wowload fadeIn">
+				<img src="~/images/portfolio/1.jpg" alt="img01" />
+				<figcaption>
+					<h2>Wontons</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/1.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/2.jpg" alt="img01" />
+				<figcaption>
+					<h2>Pho</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/2.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/3.jpg" alt="img01" />
+				<figcaption>
+					<h2>music</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/3.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/4.jpg" alt="img01" />
+				<figcaption>
+					<h2>Vintage</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/4.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/5.jpg" alt="img01" />
+				<figcaption>
+					<h2>Egg Rolls</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/5.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/6.jpg" alt="img01" />
+				<figcaption>
+					<h2>hotel</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/6.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/7.jpg" alt="img01" />
+				<figcaption>
+					<h2>Chinese</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/7.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/8.jpg" alt="img01" />
+				<figcaption>
+					<h2>Dicrap</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/8.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure class="effect-oscar  wowload fadeInUp">
+				<img src="~/images/portfolio/9.jpg" alt="img01" />
+				<figcaption>
+					<h2>Coffee</h2>
+					<p>
+						Lily likes to play with crayons and pencils<br>
+						<a href="~/images/portfolio/9.jpg" title="1" data-gallery>View Recipe</a>
+					</p>
+				</figcaption>
+			</figure>
+
+
+		</div>*@
+		  

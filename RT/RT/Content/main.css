@@ -199,6 +199,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #navigation .navbar {
   background:rgba(255, 255, 255, 0.952941);
+  background: #313b49;
   border-radius: 0;
   border-bottom: 0;
   box-shadow: rgba(0, 0, 0, 0.298039) 0px 0px 3px;
@@ -224,7 +225,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #navigation .navbar-nav.navbar-right li a {
-	color: #43484E;
+	//color: #43484E;
+	color:#008597;
 	font-family: 'Roboto',sans-serif;
 	font-size: 14px;
 	padding: 0;

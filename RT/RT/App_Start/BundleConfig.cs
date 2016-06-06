@@ -25,12 +25,12 @@ namespace RT
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",
-					  "~/Content/site.css"//,
-					  //"~/Content/animate.css",
-					  //"~/Content/blueimp-gallery.min.css",
-					  //"~/Content/main.css",
-					  //"~/Content/responsive.css",
-					  //"~/Content/set.css"
+					  "~/Content/site.css",
+					  "~/Content/animate.css",
+					  "~/Content/blueimp-gallery.min.css",
+					  "~/Content/main.css",
+					  "~/Content/responsive.css",
+					  "~/Content/set.css"
 					  ));
 
 
