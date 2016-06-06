@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
-	var ingredient_max_fields = 10; //maximum input boxes allowed
-	var direction_max_fields = 10; //maximum input boxes allowed
+	var ingredient_max_fields = 15; //maximum input boxes allowed
+	var direction_max_fields = 15; //maximum input boxes allowed
 	var wrapper = $(".input_fields_wrap"); //Fields wrapper
 	var add_button = $(".add_field_button"); //Add button ID
 
@@ -17,8 +17,8 @@
 
 			$(wrapper).append('<div class="form-group">'
 						+'<div class="col-md-10">'
-							+'<input class="form-control text-box single-line" id="Ingredients_RecipeIngredient" name="Ingredients.RecipeIngredient" type="text" value="" />'
-							+ '<span class="field-validation-valid text-danger" data-valmsg-for="Ingredients.RecipeIngredient" data-valmsg-replace="true"></span>'
+							+ '<input class="form-control text-box single-line" id="Ingredients_RecipeIngredient' + ingredient_initial+ '" name="Ingredients.RecipeIngredient' + ingredient_initial+ '" type="text" value="" />'
+							+ '<span class="field-validation-valid text-danger" data-valmsg-for="Ingredients.RecipeIngredient' + ingredient_initial+ '" data-valmsg-replace="true"></span>'
 							+ '<a href="#" class="remove_field">Remove</a>'
 						+'</div>'
 					+'</div>');
@@ -42,8 +42,8 @@
 
 			$(".direction_input_fields_wrap").append('<div class="form-group">'
 						+'<div class="col-md-10">'
-							+ '<input class="form-control text-box single-line" id="Directions_RecipeDirection" name="Directions.RecipeDirection type="text" value="" />'
-							+ '<span class="field-validation-valid text-danger" data-valmsg-for="Directions.RecipeDirection"  data-valmsg-replace="true"></span>'
+							+ '<input class="form-control text-box single-line" id="Directions_RecipeDirection' + direction_initial+ '" name="Directions.RecipeDirection' + direction_initial+ '" type="text" value="" />'
+							+ '<span class="field-validation-valid text-danger" data-valmsg-for="Directions.RecipeDirection' + direction_initial+ '"  data-valmsg-replace="true"></span>'
 							+ '<a href="#" class="remove_field">Remove</a>'
 						+'</div>'
 					+'</div>');

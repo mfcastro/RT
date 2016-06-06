@@ -103,24 +103,21 @@ namespace RT.Models
 
 	}
 
-
-
-	public class RecipeViewModelWithListOfIngredients
+	public class RecipeCollectionViewModel
 	{
+		public List<RecipeCollection> RecipeCollectionList { get; set; }
+		public RecipeCollection RecipeCollection { get; set; }
 
-		public Recipe Recipe { get; set; }
-
-		public Author Author { get; set; }
-
-		public List<Ingredient> Ingredients { get; set; }
+		public Ingredient Ingredients { get; set; }
 
 		public Direction Directions { get; set; }
 
+		//public List<Recipe> RecipeList { get; set; }
+		public Recipe Recipe { get; set; }
 
-		public Recipe_Ingredient_Join Recipe_Ingredient_Join { get; set; }
+		public List<Recipe_Collection_Join> Recipe_Collection_Join_List { get; set; }
 
-		public Recipe_Direction_Join Recipe_Direction_Join { get; set; }
-
+		public Recipe_Collection_Join Recipe_Collection_Join { get; set; }
 	}
 
 }

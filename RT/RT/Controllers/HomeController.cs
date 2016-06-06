@@ -26,7 +26,7 @@ namespace RT.Controllers
 		//static Func<object, Task<object>> outsideFunc = Edge.Func(@"return require('C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\myfunc.js')");
 
 
-		public async Task<ActionResult> Index()
+		public ActionResult Index()
 		{
 
 

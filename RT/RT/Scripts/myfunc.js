@@ -12,11 +12,11 @@ module.exports = function (data, callback) {
 
 
 
-var scraper = function () {
-
+var scraper = function (data) {
+	var file = 'C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\\Scripts\\data.json';
 	//var recipeURL = 'http://www.foodnetwork.com/recipes/rachael-ray/radicchio-pasta-salad-recipe.html';
-	var recipeURL = 'http://www.foodnetwork.com/recipes/rachael-ray/tomato-onion-and-cucumber-salad-recipe.html';
-
+	//var recipeURL = 'http://www.foodnetwork.com/recipes/rachael-ray/tomato-onion-and-cucumber-salad-recipe.html';
+	var recipeURL = data;
 	if (recipeURL.includes('allrecipes')) {
 		console.log('All Recipes Recipe')
 
@@ -36,12 +36,11 @@ var scraper = function () {
 			//console.log(page.recipeTitle)
 			//page['url'] = recipeURL;
 			//var file = 'recipe.json';
-			var file = 'C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\\Scripts\\data.json'
 			page['recipeURL'] = recipeURL;
 			jsonfile.writeFile(file, page, { spaces: 2 }, function (err) {
 				console.error(err)
 			})
-
+			return page;
 		});
 
 		//--------------------------------------------------------------------------------------------   
@@ -73,6 +72,7 @@ var scraper = function () {
 			console.error(err)
 		})
 
+		return page;
 	});
 
 
@@ -99,7 +99,7 @@ var scraper = function () {
 	 		console.error(err)
 	 	})
 
-	 	//return file;
+	 	return page;
 
 	 });
 	}

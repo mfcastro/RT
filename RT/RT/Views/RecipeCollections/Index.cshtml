@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RT.Models.RecipeCollection>
+
+@{
+    ViewBag.Title = "My Recipe Collections";
+}
+
+<h2>My Recipe Collections</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.FirstName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CollectionName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsList)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBox)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CollectionName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsList)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBox)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

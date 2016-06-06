@@ -12,6 +12,8 @@ namespace RT.Models
 		[Key]
 		public int ID { get; set; }
 
+
+		[Display(Name = "Collection Name")]
 		public string CollectionName { get; set; }
 
 
@@ -20,8 +22,12 @@ namespace RT.Models
 
 		public virtual ApplicationUser ApplicationUser { get; set; }
 
-
+		[Display(Name = "Is this a list?")]
 		public bool IsList { get; set; }
+
+		[Display(Name = "Is this a box?")]
 		public bool IsBox { get; set; }
+
+		public bool IncludeCollection { get; set; }
 	}
 }

@@ -1,0 +1,153 @@
+﻿@model RT.Models.RecipeCollectionViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Collection Name:</h2>
+
+<div>
+    <strong><h3>@Html.DisplayFor(m => m.RecipeCollection.CollectionName)</h3></strong>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.FirstName)
+        </dd>*@
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.RecipeCollection.CollectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecipeCollection.CollectionName)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.IsList)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsList)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBox)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBox)
+        </dd>*@
+
+    </dl>
+</div>
+
+
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Recipe.Title)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Recipe.Author.AuthorName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Recipe.CookingTime)
+		</th>
+		<th></th>
+	</tr>
+
+	@*<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Recipe.Title)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Author.AuthorName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Recipe.CookingTime)
+			</th>
+			<th></th>
+		</tr>*@
+
+
+
+
+
+
+	@foreach (var item in Model.Recipe_Collection_Join_List)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.Author.AuthorName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.CookingTime)
+			</td>
+
+
+			<td>
+				@*@Html.ActionLink("Edit", "Edit", item) |*@
+				@Html.ActionLink("Details", "Details","Recipes",item.Recipe, new { }) |
+				@Html.ActionLink("Delete", "Delete", item)
+			</td>
+		</tr>
+
+		@*<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Recipe.Title)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Author.AuthorName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Recipe.CookingTime)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+					@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+				</td>
+			</tr>*@
+
+
+
+
+	}
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecipeCollection.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

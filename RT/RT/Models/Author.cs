@@ -11,8 +11,10 @@ namespace RT.Models
 		[Key]
 		public int ID { get; set; }
 
+		[Display(Name = "Original Author")]
 		public string AuthorName { get; set; }
 
+		[Display(Name = "Recipe URL")]
 		public string RecipeURL { get; set; }
 
 	}

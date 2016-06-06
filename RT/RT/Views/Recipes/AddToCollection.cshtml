@@ -1,0 +1,174 @@
+﻿@model RT.Models.RecipeCollectionViewModel
+
+
+
+
+
+
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+
+		<div class="form-horizontal">
+			<br />
+			<h4>Add <strong>@Model.Recipe.Title </strong>to:</h4>
+			<hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+			@Html.HiddenFor(model => model.Ingredients.ID)
+			@Html.HiddenFor(Model => Model.Directions.ID)
+			@Html.HiddenFor(model => model.Recipe.ID)
+
+			@*@Html.HiddenFor(model => model.Recipe)*@
+			@*@Html.LabelFor(model => model.Recipe.Title, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+			@*<div class="form-group">
+					@Html.LabelFor(model => model.RecipeCollection.CollectionName, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.RecipeCollection.CollectionName, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.RecipeCollection.CollectionName, "", new { @class = "text-danger" })
+					</div>
+				</div>*@
+
+			@*<div class="form-group">
+					@Html.LabelFor(model => model.RecipeCollectionList, "RecipeCollectionList", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.DropDownList("CollectionName", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.RecipeCollectionList, "", new { @class = "text-danger" })
+					</div>
+				</div>*@
+
+
+
+
+			@*<div class="form-group">
+					<label class="control-label col-md-2" for="RecipeCollection_IsList">IsList</label>
+					<div class="col-md-10">
+						<div class="checkbox">
+							<input class="check-box" data-val="true" data-val-required="The IsList field is required." id="RecipeCollection_IsList" name="RecipeCollection.IsList" type="checkbox" value="true"><input name="RecipeCollection.IsList" type="hidden" value="false">
+							<span class="field-validation-valid text-danger" data-valmsg-for="RecipeCollection.IsList" data-valmsg-replace="true"></span>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					@Html.LabelFor(model => model.RecipeCollection.IsBox, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						<div class="checkbox">
+							@Html.EditorFor(model => model.RecipeCollection.IsBox)
+							@Html.ValidationMessageFor(model => model.RecipeCollection.IsBox, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>*@
+
+
+			<h2>Available Collections</h2>
+			
+			@*<div class="form-group">
+				@Html.LabelFor(model => model.RecipeCollection.CollectionName, "ID", htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.DropDownList("ID", null, htmlAttributes: new { @class = "form-control" })
+					@Html.ValidationMessageFor(model => model.RecipeCollection.CollectionName, "", new { @class = "text-danger" })
+				</div>
+			</div>*@
+			
+			
+			@*@foreach (var collection in Model.RecipeCollectionList)
+			{
+
+				<div class="form-group">
+					<label class="control-label col-md-2" for="RecipeCollection_CollectionName">@collection.CollectionName</label>
+					<div class="col-md-10">
+						<div class="checkbox">
+							
+							
+							<input class="check-box" data-val="true" data-val-required="The IsList field is required." id="RecipeCollection_IncludeCollection" name="RecipeCollection.IncludeCollection" type="checkbox" value="true" />
+							<input name="RecipeCollection.IncludeCollection" type="hidden" value="false" />
+							<span class="field-validation-valid text-danger" data-valmsg-for="RecipeCollection.IncludeCollection" data-valmsg-replace="true"></span>
+
+
+
+
+
+							<input class="check-box" data-val="true" data-val-required="The IsList field is required." id="RecipeCollection_ID" name="RecipeCollection" type="checkbox" value="true" />
+							<input name="RecipeCollection" type="hidden" value="RecipeCollection" />
+							<span class="field-validation-valid text-danger" data-valmsg-for="RecipeCollection" data-valmsg-replace="RecipeCollection"></span>
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+			}*@
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.RecipeCollection.CollectionName, htmlAttributes: new { @class = "control-label col-md-3" })
+
+				
+
+				<div class="col-md-9">
+					<select class="form-control" name="RecipeCollection.ID">
+						<option>Please Select an existing collection</option>
+						@foreach (var item in Model.RecipeCollectionList)
+						{
+							<option name =@item.ID value=@item.ID>@item.CollectionName</option>
+						}
+
+					</select>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Add" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div>
+		@Html.ActionLink("Back to List", "Index")
+	</div>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}

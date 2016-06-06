@@ -13,8 +13,11 @@ namespace RT.Models
 		public int ID { get; set; }
 
 		public string Title { get; set; }
+		[Display(Name = "Cooking Time")]
 		public string CookingTime { get; set; }
 
+
+		
 		[ForeignKey("Author")]
 		public int AuthorID { get; set; }
 
