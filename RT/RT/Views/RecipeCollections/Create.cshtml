@@ -24,36 +24,28 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.UserID, "UserID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.IsList, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrivateCollection, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsList)
-                    @Html.ValidationMessageFor(model => model.IsList, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.PrivateCollection)
+                    @Html.ValidationMessageFor(model => model.PrivateCollection, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsBox, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PublicCollection, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsBox)
-                    @Html.ValidationMessageFor(model => model.IsBox, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.PublicCollection)
+                    @Html.ValidationMessageFor(model => model.PublicCollection, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>

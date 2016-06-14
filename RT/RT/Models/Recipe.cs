@@ -24,9 +24,10 @@ namespace RT.Models
 		public virtual Author Author { get; set; }
 
 
-		//[ForeignKey("PostedByUser")]
-		//public int ?  PostedByID { get; set; }
-		//public virtual PostedByUser PostedByUser { get; set; }
+		[ForeignKey("ApplicationUser")]
+		public string UserID { get; set; }
+
+		public virtual ApplicationUser ApplicationUser { get; set; }
 
 
 	}

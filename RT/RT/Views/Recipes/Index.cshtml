@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary"})
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
 		<th>
 			@Html.DisplayNameFor(model => model.Title)
@@ -17,10 +17,13 @@
 		<th>
 			@Html.DisplayNameFor(model => model.Author.AuthorName)
 		</th>
+		@*<th>
+			@Html.DisplayNameFor(Model => Model.UserID)
+		</th>*@
         <th>
             @Html.DisplayNameFor(model => model.CookingTime)
         </th>
-        <th></th>
+        
     </tr>
 
 	@*<tr>
@@ -49,8 +52,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Author.AuthorName)
         </td>
+		@*<td>
+		@Html.ActionLink(@item.Title, "Details", item)
+		</td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.CookingTime)
+         @Html.DisplayFor(modelItem => item.CookingTime)
         </td>
         <td>
             @*@Html.ActionLink("Edit", "Edit", item) |*@

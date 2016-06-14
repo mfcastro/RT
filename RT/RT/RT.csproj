@@ -368,6 +368,10 @@
     <Content Include="Views\Recipes\AddToCollection.cshtml" />
     <Content Include="Views\Recipes\GetRecipeFromURL.cshtml" />
     <Content Include="Views\Recipes\RecipeFromURL.cshtml" />
+    <Content Include="Views\Recipes\Error.cshtml" />
+    <Content Include="Views\Recipes\AddRecipe.cshtml" />
+    <Content Include="Views\Recipes\AddRecipeCreate.cshtml" />
+    <Content Include="Views\Recipes\AddRecipeURL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

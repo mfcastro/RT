@@ -1,0 +1,13 @@
+﻿@model RT.Models.RecipeViewModel
+
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+    @Html.Partial("AddRecipeURL")
+
+	@Html.Partial("AddRecipeCreate")
+
+}

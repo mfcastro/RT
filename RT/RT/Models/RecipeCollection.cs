@@ -22,11 +22,11 @@ namespace RT.Models
 
 		public virtual ApplicationUser ApplicationUser { get; set; }
 
-		[Display(Name = "Is this a list?")]
-		public bool IsList { get; set; }
+		[Display(Name = "Is this a Private Collection?")]
+		public bool PrivateCollection { get; set; }
 
-		[Display(Name = "Is this a box?")]
-		public bool IsBox { get; set; }
+		[Display(Name = "Is this a Public Collection?")]
+		public bool PublicCollection { get; set; }
 
 		public bool IncludeCollection { get; set; }
 	}

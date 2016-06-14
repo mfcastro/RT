@@ -4,9 +4,10 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+    <br />
+	<br />
     <div class="form-horizontal">
-        <h4>Recipe</h4>
+		<h4>Add a recipe by URL</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

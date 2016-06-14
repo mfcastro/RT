@@ -5,8 +5,8 @@
 	var wrapper = $(".input_fields_wrap"); //Fields wrapper
 	var add_button = $(".add_field_button"); //Add button ID
 
-	var ingredient_initial = 1; //initlal text box count
-	var direction_initial = 1;
+	var ingredient_initial = 5; //initlal text box count
+	var direction_initial = 5;
 	$(add_button).click(function (e) { //on add input button click
 		e.preventDefault();
 		if (ingredient_initial < ingredient_max_fields) { //max input box allowed

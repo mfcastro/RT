@@ -74,8 +74,8 @@
 				<figcaption>
 					<h2>@item.CollectionName</h2>
 					<p>
-						@Html.ActionLink("Details", "Details", new { id = item.ID }) ||
-						@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+						@Html.ActionLink("Details", "Details", new { id = item.ID },new { @class = "btn btn-sm btn-primary"}) ||
+						@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-sm btn-danger" })
 
 					</p>
 				</figcaption>

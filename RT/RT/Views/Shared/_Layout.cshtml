@@ -43,7 +43,7 @@
 						@{
 							if (Context.User.Identity.IsAuthenticated)
 							{
-								<li>@Html.ActionLink("RECIPES", "Index", "Recipes"@*@new {@class="scroll"}*@)</li>
+								<li>@Html.ActionLink("RECIPES", "Index", "Recipes" @*,new {@class= "navbar_link_color"}*@)</li>
 								<li>@Html.ActionLink("ADD RECIPE", "Create", "Recipes"@*, new { @class = "scroll" }*@)</li>
 								<li>@Html.ActionLink("MY RECIPE COLLECTIONS", "Index", "RecipeCollections"@*, new { @class = "scroll" }*@)</li>
 								<li>@Html.ActionLink("CREATE COLLECTION", "Create", "RecipeCollections"@*, new { @class = "scroll" }*@)</li>

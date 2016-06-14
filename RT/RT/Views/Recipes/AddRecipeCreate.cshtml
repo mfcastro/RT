@@ -1,81 +1,57 @@
-﻿@model RT.Models.RecipeViewModel
+﻿
+@model RT.Models.RecipeViewModel
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Create Recipe</h2>
-
-
-@*@Html.Partial("GetRecipeFromURL")*@
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Add a recipe by URL</h4>
-
-		@Html.ActionLink("Add from URL", "GetRecipeFromURL", new { }, new { @class = "btn btn-primary" })
-
-
-		@*@Html.Partial("GetRecipeFromURL")*@
-
-
-        <hr /> 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 		<h4>Add your own recipe</h4>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Recipe.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Recipe.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Recipe.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Recipe.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Recipe.Title, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Recipe.Title, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Recipe.CookingTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Recipe.CookingTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Recipe.CookingTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Recipe.CookingTime, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Recipe.CookingTime, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Recipe.CookingTime, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Author.AuthorName, "Author Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+		<div class="form-group">
+			@Html.LabelFor(model => model.Author.AuthorName, "Author Name", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
 				@Html.EditorFor(model => model.Author.AuthorName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Author.AuthorName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+				@Html.ValidationMessageFor(model => model.Author.AuthorName, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-		<hr />
-		
 		<div class="form-group">
 			@Html.LabelFor(model => model.Ingredients.RecipeIngredient1, "Ingredients", htmlAttributes: new { @class = "control-label col-md-2" })
-			
+
 			<div class="col-md-9">
 				@Html.EditorFor(model => model.Ingredients.RecipeIngredient1, new { htmlAttributes = new { @class = "form-control" } })
 				@Html.ValidationMessageFor(model => model.Ingredients.RecipeIngredient1, "", new { @class = "text-danger" })
-				
-				<div class="input_fields_wrap">		
+
+				<div class="input_fields_wrap">
 					<br />
 					<!---next input form ingredient #2------------------>
 					<div class="form-group">
-						
+
 						<div class="col-md-10">
-							
+
 							<input class="form-control text-box single-line" id="Ingredients_RecipeIngredient2" name="Ingredients.RecipeIngredient2" type="text" value="" />
 							<span class="field-validation-valid text-danger" data-valmsg-for="Ingredients.RecipeIngredient2" data-valmsg-replace="true"></span>
-							
+
 						</div>
-						
+
 					</div>
-					
+
 					<!---next input form ingredient #3------------------>
 					<div class="form-group">
 
@@ -87,7 +63,7 @@
 						</div>
 
 					</div>
-					
+
 					<!---next input form ingredient #4------------------>
 					<div class="form-group">
 
@@ -99,7 +75,7 @@
 						</div>
 
 					</div>
-					
+
 					<!---next input form ingredient #5------------------>
 					<div class="form-group">
 
@@ -117,7 +93,7 @@
 
 			</div>
 
-		
+
 			<div class="col-md-1">
 				<button class="add_field_button"><span class="glyphicon glyphicon-plus"></span> </button>
 			</div>
@@ -125,7 +101,7 @@
 
 
 
-		<hr />
+
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.Directions.RecipeDirection1, "Directions", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -134,11 +110,11 @@
 				@Html.ValidationMessageFor(model => model.Directions.RecipeDirection1, "", new { @class = "text-danger" })
 
 				<div class="direction_input_fields_wrap">
-				<br />
+					<br />
 					@*---------------direction #2--------------------*@
 					<div class="form-group">
 						<div class="col-md-10">
-							<input class="form-control text-box single-line" id="Directions_RecipeDirection2" name="Directions.RecipeDirection2" type="text" value=""/>
+							<input class="form-control text-box single-line" id="Directions_RecipeDirection2" name="Directions.RecipeDirection2" type="text" value="" />
 							<span class="field-validation-valid text-danger" data-valmsg-for="Directions.RecipeDirection2" data-valmsg-replace="true"></span>
 						</div>
 					</div>
@@ -173,43 +149,28 @@
 			<div class="col-md-1">
 				<button class="add_direction_field_button"><span class="glyphicon glyphicon-plus"></span></button>
 			</div>
-
 		</div>
 
 
 
-
-		<hr />
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<label for="exampleInputFile">Upload a image file</label>  @*Replace with html helper once you get the model set*@ 
-				<input type="file" id="recipeImage">
-				<p class="help-block">Upload an image that is no greater than 100px X 100px.</p>
+				<input type="submit" value="Create" class="btn btn-primary" />
 			</div>
 		</div>
+	</div>
 
 
 
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-
-
-	
-
-}
 
 
 
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Back to List", "Index")
 </div>
 
 

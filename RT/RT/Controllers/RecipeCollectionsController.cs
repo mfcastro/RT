@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RT.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RT.Controllers
 {
@@ -14,12 +15,28 @@ namespace RT.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: RecipeCollections
-        public ActionResult Index()
-        {
-            var recipeCollection = db.RecipeCollection.Include(r => r.ApplicationUser);
-            return View(recipeCollection.ToList());
-        }
+
+		protected ApplicationDbContext ApplicationDbContext { get; set; }
+		protected UserManager<ApplicationUser> UserManager { get; set; }
+
+
+
+
+		// GET: RecipeCollections
+		public ActionResult Index()
+		{
+			//var recipeCollection = db.RecipeCollection.Include(r => r.ApplicationUser);
+			//return View(recipeCollection.ToList());
+
+
+
+
+			string currentUserId = User.Identity.GetUserId();
+			ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+			//var recipeCollection = db.RecipeCollection.Include(r => r.ApplicationUser).Where(c => c.ApplicationUser == currentUser);
+			var recipeCollection = db.RecipeCollection.ToList().Where(c => c.ApplicationUser == currentUser);
+			return View(recipeCollection);
+		}
 
         // GET: RecipeCollections/Details/5
         public ActionResult Details(int? id)
@@ -35,7 +52,6 @@ namespace RT.Controllers
 
 
 			recipeCollectionViewModel.Recipe_Collection_Join_List = db.Recipe_Collection_Join.Where(r => r.RecipeCollection.ID == recipeCollectionViewModel.RecipeCollection.ID).ToList();
-			//recipeCollectionViewModel.RecipeCollectionList = db.RecipeCollection.ToList();
 
 
 			//if (recipeCollection == null)
@@ -44,7 +60,6 @@ namespace RT.Controllers
 			//}
 
 			return View(recipeCollectionViewModel);
-			//return View(recipeCollection);
         }
 
         // GET: RecipeCollections/Create
@@ -61,6 +76,9 @@ namespace RT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,CollectionName,UserID,IsList,IsBox")] RecipeCollection recipeCollection)
         {
+
+			recipeCollection.UserID = User.Identity.GetUserId();
+
             if (ModelState.IsValid)
             {
 				db.RecipeCollection.Add(recipeCollection);
