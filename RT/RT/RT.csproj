@@ -263,6 +263,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\logo copy.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\no_image.png" />
     <Content Include="images\portfolio\1.jpg" />
     <Content Include="images\portfolio\10.jpg" />
     <Content Include="images\portfolio\11.jpg" />

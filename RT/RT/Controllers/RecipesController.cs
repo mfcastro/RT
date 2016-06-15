@@ -34,10 +34,11 @@ namespace RT.Controllers
         {
 			RecipeViewModel getRecipes = new RecipeViewModel();
 
-
+			RecipeImageViewModel recipeWithImages = new RecipeImageViewModel();
 
 			var recipe = db.Recipe.Include(r => r.Author).ToList();
 			//var recipe = db.Recipe.ToList();
+
 
 			return View(recipe);
 
@@ -57,13 +58,22 @@ namespace RT.Controllers
 
 			var ingredientID = db.Recipe_Ingredient_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().IngredientID;
 			var directionID = db.Recipe_Direction_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().DirectionID;
-			var imageID = db.Recipe_Image_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().RecipeImageID;
+
 
 			recipeViewModel.Ingredients = db.Ingredient.Find(ingredientID);
 			recipeViewModel.Directions = db.Direction.Find(directionID);
 
-			//LOOK INTO, MAKE SURE IT GETS THE ACTUAL IMAGE 
-			recipeViewModel.RecipeImage = db.RecipeImage.Find(imageID);
+
+			try
+			{
+				var imageID = db.Recipe_Image_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().RecipeImageID;
+				recipeViewModel.RecipeImage = db.RecipeImage.Find(imageID);
+			}
+			catch
+			{
+
+			}
+			
 
 			if (recipeViewModel.Recipe == null)
 			{

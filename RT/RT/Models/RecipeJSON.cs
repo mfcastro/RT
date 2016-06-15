@@ -10,6 +10,9 @@ namespace RT.Models
 		public string recipeTitle { get; set; }
 		public List<string> ingredients { get; set; }
 		public List<string> directions { get; set; }
+		public string recipeImage { get; set; }
 		public string recipeURL { get; set; }
+
+		
 	}
 }

@@ -30,6 +30,10 @@ var scraper = function (data) {
 			},
 			directions: {
 				listItem: '.directions--section__steps .step .recipe-directions__list--item'
+			},
+			recipeImage: {
+				selector: '.hero-photo__image img',
+				attr: 'src'
 			}
 		}).then(page => {
 			//console.log(page) 
@@ -60,6 +64,10 @@ var scraper = function (data) {
 		},
 		directions: {
 			listItem: '.directions .recipe-directions-list p'
+		},
+		recipeImage: {
+			selector: '.lightbox-recipe-video .ico-wrap img',
+			attr: 'src'
 		}
 	}).then(page => {
 		//console.log(page) 
