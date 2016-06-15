@@ -324,11 +324,13 @@ namespace RT.Controllers
 		[HttpPost]
 		public async Task<ActionResult>  GetRecipeFromURL(Recipe recipe)
 		{
+
+			//System.IO.File.WriteAllText("C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\data.json", string.Empty);
+
+
 			try
 			{
 				//DO NOT DELETE!!!!!!!!!!!!!!!!!!	
-
-
 				await outsideFunc(recipe.Author.RecipeURL);
 
 				RecipeViewModel recipeViewModel = new RecipeViewModel();
@@ -396,11 +398,16 @@ namespace RT.Controllers
 					Author JSON_Author = new Author();
 					JSON_Author.AuthorName = recipeJSON.recipeURL;
 
+					RecipeImage JSON_Image = new RecipeImage();
+
+					JSON_Image.FileName = recipeJSON.recipeImage;
+
 
 					recipeViewModel.Ingredients = JSON_Ingredients;
 					recipeViewModel.Directions = JSON_Directions;
 					recipeViewModel.Recipe = JSON_Recipe;
 					recipeViewModel.Author = JSON_Author;
+					recipeViewModel.RecipeImage = JSON_Image;
 				}
 
 
@@ -409,9 +416,12 @@ namespace RT.Controllers
 				db.Author.Add(recipeViewModel.Author);
 				db.Ingredient.Add(recipeViewModel.Ingredients);
 				db.Direction.Add(recipeViewModel.Directions);
+				db.RecipeImage.Add(recipeViewModel.RecipeImage);
 
 				Recipe_Direction_Join join_direction_recipe = new Recipe_Direction_Join();
 				Recipe_Ingredient_Join join_ingredient_recipe = new Recipe_Ingredient_Join();
+				Recipe_Image_Join join_image_recipe = new Recipe_Image_Join();
+
 
 				join_direction_recipe.DirectionID = recipeViewModel.Directions.ID;
 				join_direction_recipe.RecipeID = recipeViewModel.Recipe.ID;
@@ -419,11 +429,17 @@ namespace RT.Controllers
 				join_ingredient_recipe.IngredientID = recipeViewModel.Ingredients.ID;
 				join_ingredient_recipe.RecipeID = recipeViewModel.Recipe.ID;
 
+				join_image_recipe.RecipeImageID = recipeViewModel.RecipeImage.ID;
+				join_image_recipe.RecipeID = recipeViewModel.Recipe.ID;
+
 				recipeViewModel.Recipe_Direction_Join = join_direction_recipe;
 				recipeViewModel.Recipe_Ingredient_Join = join_ingredient_recipe;
+				recipeViewModel.Recipe_Image_Join = join_image_recipe;
+
 
 				db.Recipe_Direction_Join.Add(recipeViewModel.Recipe_Direction_Join);
 				db.Recipe_Ingredient_Join.Add(recipeViewModel.Recipe_Ingredient_Join);
+				db.Recipe_Image_Join.Add(recipeViewModel.Recipe_Image_Join);
 
 
 				db.SaveChanges();

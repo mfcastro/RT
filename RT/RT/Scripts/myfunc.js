@@ -30,11 +30,11 @@ var scraper = function (data) {
 			},
 			directions: {
 				listItem: '.directions--section__steps .step .recipe-directions__list--item'
-			},
-			recipeImage: {
-				selector: '.hero-photo__image img',
-				attr: 'src'
 			}
+			//recipeImage: {
+			//	selector: '.hero-photo__image img',
+			//	attr: 'src'
+			//}
 		}).then(page => {
 			//console.log(page) 
 			//console.log(page.recipeTitle)
@@ -73,7 +73,7 @@ var scraper = function (data) {
 		//console.log(page) 
 
 		//var file = 'recipe.json';
-		var file = 'C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\\Scripts\\data.json'
+		//var file = 'C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\\Scripts\\data.json'
 		page['recipeURL'] = recipeURL;
 
 		jsonfile.writeFile(file, page, { spaces: 2 }, function (err) {

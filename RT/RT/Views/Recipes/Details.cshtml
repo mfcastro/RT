@@ -41,8 +41,15 @@
 			@{
 				try
 				{
+					if (Model.RecipeImage.ImageData == null)
+					{
+						<img src=@Model.RecipeImage.FileName/>
+					}
+					else
+					{
+						<img src="data:image/png;base64,@Convert.ToBase64String(Model.RecipeImage.ImageData,0,Model.RecipeImage.ImageData.Length)" width="240" height="184" />
 
-					<img src="data:image/png;base64,@Convert.ToBase64String(Model.RecipeImage.ImageData,0,Model.RecipeImage.ImageData.Length)" width="240" height="184" />
+					}
 
 				}
 				catch
