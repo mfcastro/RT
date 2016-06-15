@@ -160,6 +160,27 @@
 </div>
 
 
+
+<div>
+	@{
+		try
+		{
+			
+				<img src="data:image/png;base64,@Convert.ToBase64String(Model.RecipeImage.ImageData,0,Model.RecipeImage.ImageData.Length)" width="100" height="100" />
+			
+		}
+		catch
+		{
+			<div>No Image</div>
+		}
+	}
+</div>
+
+
+
+
+
+
 @Html.ActionLink("Add to Collection", "AddToCollection", Model.Recipe,new { @class = "btn btn-primary"})
 
 <p>

@@ -1,0 +1,30 @@
+﻿@model List<RT.Models.RecipeImage>
+
+@{
+	ViewBag.Title = "Gallery";
+}
+<h2>Gallery</h2>
+<p>
+	@Html.ActionLink("Upload New", "UploadTemp")
+</p>
+@* Here I will show Uploaded Images *@
+<table>
+	@{
+		int j = 0;
+		for (int i = 0; i < Model.Count(); i += 4)
+		{
+			j = i;
+			<tr>
+				@* I have done this for show 4 images in  a Row *@
+				@while (j < i + 4 && j < Model.Count())
+				{
+					<td>
+						<img src="data:image/png;base64,@Convert.ToBase64String(Model[j].ImageData,0,Model[j].ImageData.Length)" width="100" height="100" />
+					</td>
+					j++;
+				}
+			</tr>
+		}
+	}
+</table>
+

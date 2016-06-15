@@ -30,5 +30,9 @@ namespace RT.Models
 		public virtual ApplicationUser ApplicationUser { get; set; }
 
 
+		//[ForeignKey("RecipeImage")]
+		//public int ?  ImageID { get; set; }
+		//public virtual RecipeImage RecipeImage { get; set; }
+
 	}
 }

@@ -215,6 +215,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\RecipeImage.cs" />
     <Compile Include="Models\RecipeJSON.cs" />
     <Compile Include="Models\Direction.cs" />
     <Compile Include="Models\Followed.cs" />
@@ -372,6 +373,8 @@
     <Content Include="Views\Recipes\AddRecipe.cshtml" />
     <Content Include="Views\Recipes\AddRecipeCreate.cshtml" />
     <Content Include="Views\Recipes\AddRecipeURL.cshtml" />
+    <Content Include="Views\Recipes\UploadTemp.cshtml" />
+    <Content Include="Views\Recipes\GalleryTemp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

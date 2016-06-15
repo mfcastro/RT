@@ -92,6 +92,7 @@ namespace RT.Models
 
 		public Author Author { get; set; }
 
+		public RecipeImage RecipeImage { get; set; }
 		public Ingredient Ingredients{ get; set; }
 
 		public Direction Directions { get; set; }

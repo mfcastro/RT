@@ -10,7 +10,7 @@
 @*@Html.Partial("GetRecipeFromURL")*@
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create","Recipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -183,9 +183,12 @@
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<label for="exampleInputFile">Upload a image file</label>  @*Replace with html helper once you get the model set*@ 
+				@*<label for="exampleInputFile">Upload a image file</label>
 				<input type="file" id="recipeImage">
-				<p class="help-block">Upload an image that is no greater than 100px X 100px.</p>
+				<p class="help-block">Upload an image that is no greater than 100px X 100px.</p>*@
+			@Html.TextBoxFor(Model => Model.RecipeImage.File, new { type = "file" })
+			@Html.ValidationMessage("CustomError")
+			
 			</div>
 		</div>
 

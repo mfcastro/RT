@@ -60,7 +60,7 @@ namespace RT.Controllers
 
 			recipeViewModel.Ingredients = db.Ingredient.Find(ingredientID);
 			recipeViewModel.Directions = db.Direction.Find(directionID);
-
+			//recipeViewModel.RecipeImage
 
 			if (recipeViewModel.Recipe == null)
 			{
@@ -96,6 +96,39 @@ namespace RT.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(/*[Bind(Include = "ID,Title,CookingTime,AuthorID")]*/ RecipeViewModel recipeViewModel)
 		{
+
+			try
+			{
+					HttpPostedFileBase File = Request.Files[0];
+
+					//if (File.ContentLength > (2 * 1024 * 1024))
+					//{
+					//	ModelState.AddModelError("CustomError", "File size must be less than 2 MB");
+					//	//return View();
+					//}
+					//if (!(File.ContentType == "image/jpeg" || File.ContentType == "image/gif"))
+					//{
+					//	ModelState.AddModelError("CustomError", "File type allowed : jpeg and gif");
+					//	//return View();
+					//}
+
+					recipeViewModel.RecipeImage.FileName = File.FileName;
+					recipeViewModel.RecipeImage.ImageSize = File.ContentLength;
+
+					byte[] data = new byte[File.ContentLength];
+					File.InputStream.Read(data, 0, File.ContentLength);
+
+					recipeViewModel.RecipeImage.ImageData = data;
+
+					db.RecipeImage.Add(recipeViewModel.RecipeImage);
+				
+		
+			}
+			catch
+			{
+
+			}
+			
 
 
 
@@ -438,6 +471,92 @@ namespace RT.Controllers
 
 			return RedirectToAction("Index");
 			//return View(recipeCollectionViewModel);
+		}
+
+
+
+
+
+		/////////////////////////////////////////////////////////////////////
+
+		public ActionResult GalleryTemp()
+		{
+			List<RecipeImage> all = new List<RecipeImage>();
+
+			all = db.RecipeImage.ToList();
+
+			return View(all);
+		}
+
+
+		public ActionResult UploadTemp()
+		{
+			return View();
+		}
+
+
+		[HttpPost]
+		public ActionResult UploadTemp(RecipeImage IG)
+		{
+			HttpPostedFileBase File = Request.Files[0];
+
+			// Apply Validation Here
+
+
+			if (File.ContentLength > (2 * 1024 * 1024))
+			{
+				ModelState.AddModelError("CustomError", "File size must be less than 2 MB");
+				return View();
+			}
+			if (!(File.ContentType == "image/jpeg" || File.ContentType == "image/gif"))
+			{
+				ModelState.AddModelError("CustomError", "File type allowed : jpeg and gif");
+				return View();
+			}
+
+			IG.FileName = File.FileName;
+			IG.ImageSize = File.ContentLength;
+
+			byte[] data = new byte[File.ContentLength];
+			File.InputStream.Read(data, 0, File.ContentLength);
+
+			IG.ImageData = data;
+
+			db.RecipeImage.Add(IG);
+			db.SaveChanges();
+
+			return RedirectToAction("GalleryTemp");
+		}
+
+
+		public void UploadRecipeImage(RecipeImage IG)
+		{
+			HttpPostedFileBase File = Request.Files[0];
+
+			// Apply Validation Here
+
+
+			//if (File.ContentLength > (2 * 1024 * 1024))
+			//{
+			//	ModelState.AddModelError("CustomError", "File size must be less than 2 MB");
+			//	return View();
+			//}
+			//if (!(File.ContentType == "image/jpeg" || File.ContentType == "image/gif"))
+			//{
+			//	ModelState.AddModelError("CustomError", "File type allowed : jpeg and gif");
+			//	return View();
+			//}
+
+			IG.FileName = File.FileName;
+			IG.ImageSize = File.ContentLength;
+
+			byte[] data = new byte[File.ContentLength];
+			File.InputStream.Read(data, 0, File.ContentLength);
+
+			IG.ImageData = data;
+
+			db.RecipeImage.Add(IG);
+			db.SaveChanges();
 		}
 
 	}
