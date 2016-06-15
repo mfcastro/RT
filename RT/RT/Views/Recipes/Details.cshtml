@@ -41,9 +41,10 @@
 			@{
 				try
 				{
-					if (Model.RecipeImage.ImageData == null)
+
+					if (Model.RecipeImage.FileName.Contains("http"))
 					{
-						<img src=@Model.RecipeImage.FileName/>
+						<img src=@Model.RecipeImage.FileName width="240" height="184"/>
 					}
 					else
 					{

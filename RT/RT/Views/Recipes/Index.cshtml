@@ -11,6 +11,7 @@
 </p>
 <table class="table table-striped">
     <tr>
+		<th></th>
 		<th>
 			@Html.DisplayNameFor(model => model.Title)
 		</th>
@@ -23,6 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CookingTime)
         </th>
+		<th></th>
         
     </tr>
 
@@ -43,9 +45,17 @@
 
 
 
-
 @foreach (var item in Model) {
+	var href = "/Recipes/Details/2?Author=" + @item.Author + "&amp;Title=" +@item.Title+"&amp;CookingTime="+@item.CookingTime+"&amp;AuthorID="+@item.AuthorID;
+
+
+
     <tr>
+		<td>
+			<a href="/Recipes/Details/2?Author=RT.Models.Author&amp;Title=Cheese%20Slice&amp;CookingTime=10%20minutes%20&amp;AuthorID=6"><img src="~/images/no_image.png" alt="Recipe picture"/></a>
+		@*<a href=@href><<img src="~/images/no_image.png" alt="Recipe picture" />/a>*@
+		</td>
+
 		<td>
 			@Html.DisplayFor(modelItem => item.Title)
 		</td>
