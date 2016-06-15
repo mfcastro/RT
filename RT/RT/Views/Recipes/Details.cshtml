@@ -159,9 +159,10 @@
     </dl>
 </div>
 
+<img src="data:image/png;base64,@Convert.ToBase64String(Model.RecipeImage.ImageData,0,Model.RecipeImage.ImageData.Length)" width="100" height="100" />
 
 
-<div>
+@*<div>
 	@{
 		try
 		{
@@ -174,7 +175,7 @@
 			<div>No Image</div>
 		}
 	}
-</div>
+</div>*@
 
 
 

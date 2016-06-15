@@ -36,6 +36,7 @@ namespace RT.Models
 		public DbSet<Recipe_Collection_Join> Recipe_Collection_Join { get; set; }
 		public DbSet<Recipe_Direction_Join> Recipe_Direction_Join { get; set; }
 		public DbSet<Recipe_Ingredient_Join> Recipe_Ingredient_Join { get; set; }
+		public DbSet<Recipe_Image_Join> Recipe_Image_Join { get; set; }
 		public DbSet<RecipeCollection> RecipeCollection { get; set; }
 
 

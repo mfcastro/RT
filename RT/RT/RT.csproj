@@ -228,6 +228,7 @@
     <Compile Include="Models\RecipeCollection.cs" />
     <Compile Include="Models\Recipe_Collection_Join.cs" />
     <Compile Include="Models\Recipe_Direction_Join.cs" />
+    <Compile Include="Models\Recipe_Image_Join.cs" />
     <Compile Include="Models\Recipe_Ingredient_Join.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

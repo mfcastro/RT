@@ -102,6 +102,8 @@ namespace RT.Models
 
 		public Recipe_Direction_Join Recipe_Direction_Join { get; set; }
 
+		public Recipe_Image_Join Recipe_Image_Join { get; set; }
+
 	}
 
 	public class RecipeCollectionViewModel

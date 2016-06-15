@@ -57,10 +57,13 @@ namespace RT.Controllers
 
 			var ingredientID = db.Recipe_Ingredient_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().IngredientID;
 			var directionID = db.Recipe_Direction_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().DirectionID;
+			var imageID = db.Recipe_Image_Join.Where(r => r.RecipeID == recipe.ID).SingleOrDefault().RecipeImageID;
 
 			recipeViewModel.Ingredients = db.Ingredient.Find(ingredientID);
 			recipeViewModel.Directions = db.Direction.Find(directionID);
-			//recipeViewModel.RecipeImage
+
+			//LOOK INTO, MAKE SURE IT GETS THE ACTUAL IMAGE 
+			recipeViewModel.RecipeImage = db.RecipeImage.Find(imageID);
 
 			if (recipeViewModel.Recipe == null)
 			{
@@ -150,6 +153,8 @@ namespace RT.Controllers
 
 				Recipe_Direction_Join join_direction_recipe = new Recipe_Direction_Join();
 				Recipe_Ingredient_Join join_ingredient_recipe = new Recipe_Ingredient_Join();
+				Recipe_Image_Join join_image_recipe = new Recipe_Image_Join();
+
 
 				join_direction_recipe.DirectionID = recipeViewModel.Directions.ID;
 				join_direction_recipe.RecipeID = recipeViewModel.Recipe.ID;
@@ -157,11 +162,17 @@ namespace RT.Controllers
 				join_ingredient_recipe.IngredientID = recipeViewModel.Ingredients.ID;
 				join_ingredient_recipe.RecipeID = recipeViewModel.Recipe.ID;
 
+				join_image_recipe.RecipeImageID = recipeViewModel.RecipeImage.ID;
+				join_image_recipe.RecipeID = recipeViewModel.Recipe.ID;
+
 				recipeViewModel.Recipe_Direction_Join = join_direction_recipe;
 				recipeViewModel.Recipe_Ingredient_Join = join_ingredient_recipe;
+				recipeViewModel.Recipe_Image_Join = join_image_recipe;
+
 
 				db.Recipe_Direction_Join.Add(recipeViewModel.Recipe_Direction_Join);
 				db.Recipe_Ingredient_Join.Add(recipeViewModel.Recipe_Ingredient_Join);
+				db.Recipe_Image_Join.Add(recipeViewModel.Recipe_Image_Join);
 
 				db.SaveChanges();
 
