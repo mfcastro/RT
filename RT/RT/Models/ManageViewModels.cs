@@ -125,9 +125,7 @@ namespace RT.Models
 
 	public class RecipeImageViewModel
 	{
-		public Recipe Recipe { get; set; }
-
-		public RecipeImage RecipeImage { get; set; }
+		public List<RecipeViewModel> ListRecipeViewModel { get; set; }
 
 	}
 

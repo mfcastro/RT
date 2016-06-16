@@ -32,15 +32,50 @@ namespace RT.Controllers
 		// GET: Recipes
 		public ActionResult Index()
         {
-			RecipeViewModel getRecipes = new RecipeViewModel();
-
 			RecipeImageViewModel recipeWithImages = new RecipeImageViewModel();
+			recipeWithImages.ListRecipeViewModel = new List<RecipeViewModel>();
 
 			var recipe = db.Recipe.Include(r => r.Author).ToList();
-			//var recipe = db.Recipe.ToList();
 
 
-			return View(recipe);
+			////---------------------------------------------------------------------------------------------------------
+
+			for (int i = 0; i < recipe.Count; i++)
+			{
+				RecipeViewModel recipeViewModel = new RecipeViewModel();
+				var recipeItem = recipe[i];
+
+
+				if (recipeItem.ID == null)
+				{
+					return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				}
+				recipeViewModel.Recipe = db.Recipe.Find(recipeItem.ID);
+
+				//var ingredientID = db.Recipe_Ingredient_Join.Where(r => r.RecipeID == recipeItem.ID).SingleOrDefault().IngredientID;
+				//var directionID = db.Recipe_Direction_Join.Where(r => r.RecipeID == recipeItem.ID).SingleOrDefault().DirectionID;
+
+
+				//recipeViewModel.Ingredients = db.Ingredient.Find(ingredientID);
+				//recipeViewModel.Directions = db.Direction.Find(directionID);
+
+
+				try
+				{
+					var imageID = db.Recipe_Image_Join.Where(r => r.RecipeID == recipeItem.ID).SingleOrDefault().RecipeImageID;
+					recipeViewModel.RecipeImage = db.RecipeImage.Find(imageID);
+				}
+				catch
+				{
+
+				}
+
+
+				recipeWithImages.ListRecipeViewModel.Add(recipeViewModel);
+			}
+
+			//return View(recipe);
+			return View(recipeWithImages.ListRecipeViewModel);
 
 		}
 

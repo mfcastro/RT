@@ -1,19 +1,19 @@
-﻿@model IEnumerable<RT.Models.Recipe>
+﻿@model IEnumerable<RT.Models.RecipeViewModel>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <h2>Available Recipes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table table-striped">
     <tr>
 		<th></th>
 		<th>
-			@Html.DisplayNameFor(model => model.Title)
+			@Html.DisplayNameFor(model => model.Recipe.Title)
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.Author.AuthorName)
@@ -22,7 +22,7 @@
 			@Html.DisplayNameFor(Model => Model.UserID)
 		</th>*@
         <th>
-            @Html.DisplayNameFor(model => model.CookingTime)
+            @Html.DisplayNameFor(model => model.Recipe.CookingTime)
         </th>
 		<th></th>
         
@@ -42,59 +42,68 @@
 	</tr>*@
 
 
+@foreach (var item in Model)
+	{
+		var href = "/Recipes/Details/" + @item.Recipe.ID + "?Author=" + @item.Recipe.Author + "&amp;Title=" + @item.Recipe.Title + "&amp;CookingTime=" + @item.Recipe.CookingTime + "&amp;AuthorID=" + @item.Recipe.AuthorID;
 
 
 
-@foreach (var item in Model) {
-	var href = "/Recipes/Details/2?Author=" + @item.Author + "&amp;Title=" +@item.Title+"&amp;CookingTime="+@item.CookingTime+"&amp;AuthorID="+@item.AuthorID;
+		<tr>
+			<td>
+				@*<a href="/Recipes/Details/2?Author=RT.Models.Author&amp;Title=Cheese%20Slice&amp;CookingTime=10%20minutes%20&amp;AuthorID=6"><img src="~/images/no_image.png" alt="Recipe picture"/></a>*@
+				@*<a href=@href><img src="~/images/no_image.png" alt="Recipe picture" /></a>*@
+				@{
+				try
+				{
+
+					if (item.RecipeImage.FileName.Contains("http"))
+					{
+						<a href=@href><img src=@item.RecipeImage.FileName width="240" height="184" /></a>
+					}
+					else
+					{
+							<a href=@href><img src="data:image/png;base64,@Convert.ToBase64String(item.RecipeImage.ImageData,0,item.RecipeImage.ImageData.Length)" width="240" height="184" /></a>
+
+					}
+
+				}
+				catch
+				{
+
+						<img src="~/images/no_image.png" />
+				}
+				}
 
 
 
-    <tr>
-		<td>
-			<a href="/Recipes/Details/2?Author=RT.Models.Author&amp;Title=Cheese%20Slice&amp;CookingTime=10%20minutes%20&amp;AuthorID=6"><img src="~/images/no_image.png" alt="Recipe picture"/></a>
-		@*<a href=@href><<img src="~/images/no_image.png" alt="Recipe picture" />/a>*@
-		</td>
+			</td>
 
-		<td>
-			@Html.DisplayFor(modelItem => item.Title)
-		</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author.AuthorName)
-        </td>
-		@*<td>
-		@Html.ActionLink(@item.Title, "Details", item)
-		</td>*@
-        <td>
-         @Html.DisplayFor(modelItem => item.CookingTime)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", item) |*@
-            @Html.ActionLink("Details", "Details", item) |
-            @Html.ActionLink("Delete", "Delete", item)
-        </td>
-    </tr>
-
-	@*<tr>
-		<td>
-			@Html.DisplayFor(modelItem => item.Recipe.Title)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Author.AuthorName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Recipe.CookingTime)
-		</td>
-		<td>
-			@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-			@Html.ActionLink("Details", "Details", new { id = item.ID }) |
-			@Html.ActionLink("Delete", "Delete", new { id = item.ID })
-		</td>
-	</tr>*@
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Author.AuthorName)
+			</td>
+			@*<td>
+				@Html.ActionLink(@item.Title, "Details", item)
+				</td>*@
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.CookingTime)
+			</td>
+			<td>
+				@*@Html.ActionLink("Edit", "Edit", item) |*@
+				@Html.ActionLink("Details", "Details", item.Recipe) |
+				@Html.ActionLink("Delete", "Delete", item.Recipe)
+			</td>
+		</tr>
 
 
 
 
+	
 }
 
 </table>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------->
