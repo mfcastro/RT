@@ -15,6 +15,7 @@ namespace RT.Models
 		public string FileName { get; set; }
 		public byte[] ImageData { get; set; }
 
+		[Display (Name = "Upload recipe image")]
 		public string File
 		{
 			get

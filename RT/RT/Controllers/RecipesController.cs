@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using EdgeJs;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace RT.Controllers
 {
@@ -32,8 +33,7 @@ namespace RT.Controllers
 		// GET: Recipes
 		public ActionResult Index()
         {
-			RecipeImageViewModel recipeWithImages = new RecipeImageViewModel();
-			recipeWithImages.ListRecipeViewModel = new List<RecipeViewModel>();
+			List<RecipeViewModel> ListRecipeViewModel = new List<RecipeViewModel>();
 
 			var recipe = db.Recipe.Include(r => r.Author).ToList();
 
@@ -71,11 +71,11 @@ namespace RT.Controllers
 				}
 
 
-				recipeWithImages.ListRecipeViewModel.Add(recipeViewModel);
+				ListRecipeViewModel.Add(recipeViewModel);
 			}
 
 			//return View(recipe);
-			return View(recipeWithImages.ListRecipeViewModel);
+			return View(ListRecipeViewModel);
 
 		}
 
@@ -370,6 +370,7 @@ namespace RT.Controllers
 
 				RecipeViewModel recipeViewModel = new RecipeViewModel();
 
+				Thread.Sleep(2000);
 
 				using (StreamReader r = new StreamReader("C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\data.json"))
 				{

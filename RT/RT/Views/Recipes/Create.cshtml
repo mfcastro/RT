@@ -182,10 +182,9 @@
 		<hr />
 
 		<div class="form-group">
+			@*<label for="exampleInputFile" class="col-md-offset-1">Upload recipe image</label>*@
+			@Html.LabelFor(model => model.RecipeImage.File, "Upload recipe image", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-offset-2 col-md-10">
-				@*<label for="exampleInputFile">Upload a image file</label>
-				<input type="file" id="recipeImage">
-				<p class="help-block">Upload an image that is no greater than 100px X 100px.</p>*@
 			@Html.TextBoxFor(Model => Model.RecipeImage.File, new { type = "file" })
 			@Html.ValidationMessage("CustomError")
 			

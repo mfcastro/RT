@@ -44,11 +44,11 @@
 
 					if (Model.RecipeImage.FileName.Contains("http"))
 					{
-						<img src=@Model.RecipeImage.FileName width="240" height="184"/>
+						<img src=@Model.RecipeImage.FileName width="480" height="368"/>
 					}
 					else
 					{
-						<img src="data:image/png;base64,@Convert.ToBase64String(Model.RecipeImage.ImageData,0,Model.RecipeImage.ImageData.Length)" width="240" height="184" />
+						<img src="data:image/png;base64,@Convert.ToBase64String(Model.RecipeImage.ImageData,0,Model.RecipeImage.ImageData.Length)" width="480" height="368" />
 
 					}
 
@@ -56,7 +56,7 @@
 				catch
 				{
 
-					<img src="~/images/no_image.png" />
+					<img src="~/images/no_image.png" width="480" height="368" />
 				}
 			}
 		</div>
@@ -200,6 +200,9 @@
 @Html.ActionLink("Add to Collection", "AddToCollection", Model.Recipe,new { @class = "btn btn-primary"})
 
 <p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |*@
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) | https://developers.facebook.com/docs/plugins/*@
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+	@*<div class="fb-share-button" data-href="http://www.marcofcastro.com" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A2999%2FRecipes%2FDetails%2F1152%3FAuthor%3DRT.Models.Author%26amp%253BTitle%3DMocha&amp;src=sdkpreparse">Share</a></div>*@

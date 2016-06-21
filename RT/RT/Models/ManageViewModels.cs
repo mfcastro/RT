@@ -121,11 +121,10 @@ namespace RT.Models
 		public List<Recipe_Collection_Join> Recipe_Collection_Join_List { get; set; }
 
 		public Recipe_Collection_Join Recipe_Collection_Join { get; set; }
-	}
 
-	public class RecipeImageViewModel
-	{
-		public List<RecipeViewModel> ListRecipeViewModel { get; set; }
+		public List<RecipeViewModel> RecipeViewModelList{ get; set; }
+
+
 
 	}
 

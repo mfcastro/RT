@@ -38,32 +38,134 @@ namespace RT.Controllers
 			return View(recipeCollection);
 		}
 
-        // GET: RecipeCollections/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RecipeCollection recipeCollection = db.RecipeCollection.Find(id);
+		//// GET: RecipeCollections/Details/5
+		//public ActionResult Details(int? id)
+		//{
+		//	if (id == null)
+		//	{
+		//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+		//	}
+		//	RecipeCollection recipeCollection = db.RecipeCollection.Find(id);
+
+		//	RecipeCollectionViewModel recipeCollectionViewModel = new RecipeCollectionViewModel();
+		//	recipeCollectionViewModel.RecipeCollection = recipeCollection;
+
+
+		//	recipeCollectionViewModel.Recipe_Collection_Join_List = db.Recipe_Collection_Join.Where(r => r.RecipeCollection.ID == recipeCollectionViewModel.RecipeCollection.ID).ToList();
+
+
+		//	////------------------------------------------------------------------------------------------------------------------------------------
+		//	//for (int i = 0; i < recipeCollectionViewModel.Recipe_Collection_Join_List.Count; i++)
+		//	//{
+		//	//	RecipeViewModel recipeViewModel = new RecipeViewModel();
+		//	//	var recipeItem = recipeCollectionViewModel.Recipe_Collection_Join_List[i];
+
+
+		//	//	if (recipeItem.ID == null)
+		//	//	{
+		//	//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+		//	//	}
+		//	//	recipeViewModel.Recipe = db.Recipe.Find(recipeItem.ID);
+
+		//	//	try
+		//	//	{
+		//	//		var imageID = db.Recipe_Image_Join.Where(r => r.RecipeID == recipeItem.ID).SingleOrDefault().RecipeImageID;
+		//	//		recipeViewModel.RecipeImage = db.RecipeImage.Find(imageID);
+		//	//	}
+		//	//	catch
+		//	//	{
+
+		//	//	}
+		//	//	//------------------------------------------------------------------------------------------------------------------------------------
+		//	//	//if (recipeCollection == null)
+		//	//	//{
+		//	//	//    return HttpNotFound();
+		//	//	//}
+
+		//	//}
+
+		//	return View(recipeCollectionViewModel);
+
+		//}
+
+		//--------------TEMORARY DETAILS CONTROLLER EXPERIEMENT-----------------------------------------------------------------------------------------------------------------------
+		// GET: RecipeCollections/Details/5
+		public ActionResult Details(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			RecipeCollection recipeCollection = db.RecipeCollection.Find(id);
 
 			RecipeCollectionViewModel recipeCollectionViewModel = new RecipeCollectionViewModel();
+			//List<RecipeViewModel> ListRecipeViewModel = new List<RecipeViewModel>();
+
+			recipeCollectionViewModel.RecipeViewModelList = new List<RecipeViewModel>();
+
+			var ListRecipeViewModel = recipeCollectionViewModel.RecipeViewModelList;
+
+
+
 			recipeCollectionViewModel.RecipeCollection = recipeCollection;
 
 
 			recipeCollectionViewModel.Recipe_Collection_Join_List = db.Recipe_Collection_Join.Where(r => r.RecipeCollection.ID == recipeCollectionViewModel.RecipeCollection.ID).ToList();
 
 
-			//if (recipeCollection == null)
-			//{
-			//    return HttpNotFound();
-			//}
+
+			for(int i = 0; i < recipeCollectionViewModel.Recipe_Collection_Join_List.Count(); i++)
+			{
+				////------------------------------------------------------------------------------------------------------------------------------------
+				//for (int i = 0; i < recipeCollectionViewModel.Recipe_Collection_Join_List.Count; i++)
+				//{
+					RecipeViewModel recipeViewModel = new RecipeViewModel();
+					var recipeItem = recipeCollectionViewModel.Recipe_Collection_Join_List[i];
+
+				recipeViewModel.Recipe = recipeItem.Recipe;
+				
+
+				//	if (recipeItem.ID == null)
+				//	{
+				//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				//	}
+				//	recipeViewModel.Recipe = db.Recipe.Find(recipeItem.ID);
+
+				try
+				{
+					var imageID = db.Recipe_Image_Join.Where(r => r.RecipeID == recipeItem.Recipe.ID).SingleOrDefault().RecipeImageID;
+					recipeViewModel.RecipeImage = db.RecipeImage.Find(imageID);
+				}
+				catch
+				{
+
+				}
+				//	//------------------------------------------------------------------------------------------------------------------------------------
+				//	//if (recipeCollection == null)
+				//	//{
+				//	//    return HttpNotFound();
+				//	//}
+
+				//}
+
+				ListRecipeViewModel.Add(recipeViewModel);
+
+			}
 
 			return View(recipeCollectionViewModel);
-        }
 
-        // GET: RecipeCollections/Create
-        public ActionResult Create()
+		}
+
+
+
+		//--------------END OF NEW DETAILS CONTROLLER EXPERIMENT-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+		// GET: RecipeCollections/Create
+		public ActionResult Create()
         {
            // ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "FirstName");
             return View();

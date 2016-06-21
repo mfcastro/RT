@@ -8,6 +8,8 @@
 
 <div>
     <strong><h3>@Html.DisplayFor(m => m.RecipeCollection.CollectionName)</h3></strong>
+	<em<h6>Click on images for full recipe</h6></em>
+
     <hr />
     <dl class="dl-horizontal">
         @*<dt>
@@ -50,6 +52,20 @@
 
 <table class="table">
 	<tr>
+		
+			
+				@*@try
+				{
+					<th>@Model.RecipeCollectionList.Count() Recipes Available</th>
+				}
+				catch
+				{
+					<th>0 Recipes Available</th>
+				}*@
+			
+		<th>@Model.Recipe_Collection_Join_List.Count() Recipes Available</th>
+
+	
 		<th>
 			@Html.DisplayNameFor(model => model.Recipe.Title)
 		</th>
@@ -59,6 +75,7 @@
 		<th>
 			@Html.DisplayNameFor(model => model.Recipe.CookingTime)
 		</th>
+		<th></th>
 		<th></th>
 	</tr>
 
@@ -80,9 +97,20 @@
 
 
 
-	@foreach (var item in Model.Recipe_Collection_Join_List)
+	@*@foreach (var item in Model.Recipe_Collection_Join_List)
 	{
+		
 		<tr>
+			<!-------------------------------------------------------------->
+			<td>
+				@{
+
+					<img src="~/images/no_image.png" />
+
+				}
+			</td>
+			<!-------------------------------------------------------------->
+
 			<td>
 				@Html.DisplayFor(modelItem => item.Recipe.Title)
 			</td>
@@ -95,7 +123,7 @@
 
 
 			<td>
-				@*@Html.ActionLink("Edit", "Edit", item) |*@
+				@Html.ActionLink("Edit", "Edit", item) |
 				@Html.ActionLink("Details", "Details","Recipes",item.Recipe, new {@class="btn btn-primary"}) |
 				@Html.ActionLink("Delete", "Delete", item)
 			</td>
@@ -121,7 +149,98 @@
 
 
 
-	}
+	@*}*@
+
+
+
+
+	@*This is an alternative solution!!!!!!!!!!!!!!!!!! *@
+
+
+
+	@foreach (var item in Model.RecipeViewModelList)
+	{
+
+				var href = "/Recipes/Details/" + @item.Recipe.ID + "?Author=" + @item.Recipe.Author + "&amp;Title=" + @item.Recipe.Title + "&amp;CookingTime=" + @item.Recipe.CookingTime + "&amp;AuthorID=" + @item.Recipe.AuthorID;
+
+		
+		<tr>
+			<!-------------------------------------------------------------->
+
+			<td>
+				@*<a href="/Recipes/Details/2?Author=RT.Models.Author&amp;Title=Cheese%20Slice&amp;CookingTime=10%20minutes%20&amp;AuthorID=6"><img src="~/images/no_image.png" alt="Recipe picture"/></a>*@
+				@*<a href=@href><img src="~/images/no_image.png" alt="Recipe picture" /></a>*@
+				@{
+				try
+				{
+
+					if (item.RecipeImage.FileName.Contains("http"))
+					{
+							<a href=@href><img src=@item.RecipeImage.FileName width="240" height="184" /></a>
+					}
+					else
+					{
+							<a href=@href><img src="data:image/png;base64,@Convert.ToBase64String(item.RecipeImage.ImageData,0,item.RecipeImage.ImageData.Length)" width="240" height="184" /></a>
+
+					}
+
+				}
+				catch
+				{
+
+						<a href=@href><img src="~/images/no_image.png" /></a>
+				}
+				}
+
+
+
+			</td>
+			<!-------------------------------------------------------------->
+
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.Author.AuthorName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipe.CookingTime)
+			</td>
+
+
+			@*<td>*@
+				@*@Html.ActionLink("Edit", "Edit", item) |*@
+				@*@Html.ActionLink("Details", "Details", "Recipes", item.Recipe, new { @class = "btn btn-primary" }) |
+				@Html.ActionLink("Delete", "Delete", item)
+			</td>*@
+		</tr>
+
+		@*<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Recipe.Title)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Author.AuthorName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Recipe.CookingTime)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+					@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+				</td>
+			</tr>*@
+
+
+
+
+					}
+
+
+
+
+
 
 </table>
 
@@ -148,6 +267,6 @@
 
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RecipeCollection.ID }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.RecipeCollection.ID }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>

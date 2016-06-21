@@ -9,9 +9,11 @@
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 </p>
+<em<h6>Click on images for full recipe</h6></em>
+
 <table class="table table-striped">
     <tr>
-		<th></th>
+		<th>@Model.Count() Recipes Found</th>
 		<th>
 			@Html.DisplayNameFor(model => model.Recipe.Title)
 		</th>
@@ -70,7 +72,7 @@
 				catch
 				{
 
-						<img src="~/images/no_image.png" />
+						<a href=@href><img src="~/images/no_image.png" /></a>
 				}
 				}
 
