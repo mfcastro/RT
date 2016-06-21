@@ -6,9 +6,34 @@
 
 <h2>Available Recipes</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-</p>
+
+
+
+
+<div class="row">
+	<div class="col-md-3">
+		<p>
+			@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+		</p>
+	</div>
+	<div class="col-md-offset-5 col-md-4">
+		@using (Html.BeginForm())
+		{
+
+
+			<div class="input-group">
+				<input type="text" id="SearchString" name="SearchString" class="form-control" placeholder="Search for...">
+				<span class="input-group-btn">
+					<input class="btn btn-default" type="submit" value="Search" />
+				</span>
+			</div><!-- /input-group -->
+	
+				@*Find by name: @Html.TextBox("SearchString")*@
+		}
+	</div>
+</div>
+
+
 <em<h6>Click on images for full recipe</h6></em>
 
 <table class="table table-striped">

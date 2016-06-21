@@ -29,13 +29,26 @@ namespace RT.Controllers
 		//Linked up. Need to change it to a relative path.
 		static Func<object, Task<object>> outsideFunc = Edge.Func(@"return require('C:\\Users\\Marco Castro\\Desktop\\RT\\RT\\RT\\Scripts\\myfunc.js')");
 
-
 		// GET: Recipes
-		public ActionResult Index()
-        {
+		public ActionResult Index(string searchString)
+		{
 			List<RecipeViewModel> ListRecipeViewModel = new List<RecipeViewModel>();
 
-			var recipe = db.Recipe.Include(r => r.Author).ToList();
+
+			List<Recipe> recipe = new List<Recipe>();
+
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				 recipe = db.Recipe.Where(s => s.Title.Contains(searchString)).Include(r => r.Author).ToList(); 
+
+			}
+			else
+			{
+				 recipe = db.Recipe.Include(r => r.Author).ToList();
+
+			}
+
+
 
 
 			////---------------------------------------------------------------------------------------------------------
@@ -79,8 +92,22 @@ namespace RT.Controllers
 
 		}
 
-        // GET: Recipes/Details/5
-        public ActionResult Details(/*int? id*/ Recipe recipe)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// GET: Recipes/Details/5
+		public ActionResult Details(/*int? id*/ Recipe recipe)
         {
 
 			RecipeViewModel recipeViewModel = new RecipeViewModel();
